@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pages.CreateNewCasePage;
 import pages.LoginPage;
 import pages.ProjectPage;
 import pages.ProjectsPage;
@@ -17,6 +18,7 @@ public class BaseTest {
     LoginPage loginPage;
     ProjectsPage projectsPage;
     ProjectPage projectPage;
+    CreateNewCasePage createNewCasePage;
     Faker faker;
     String user;
     String password;
@@ -38,6 +40,7 @@ public class BaseTest {
         loginPage = new LoginPage();
         projectsPage = new ProjectsPage();
         projectPage = new ProjectPage();
+        createNewCasePage = new CreateNewCasePage();
 
         user = System.getProperty("user", PropertyReader.getProperty("qase.user"));
         System.out.println(user);

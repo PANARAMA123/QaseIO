@@ -25,4 +25,8 @@ public class ProjectsPage {
         $(NEW_PROJECT_CODE_CSS).setValue(code);
         $(NEW_DESCRIPTION_AREA_CSS).setValue(description).submit();
     }
+    public  void createNewProject(String name) {
+            $(CREATE_NEW_PROJECT_BTN_CSS).click();
+            $(NEW_PROJECT_NAME_CSS).setValue(name).submit();
+    }
 }
