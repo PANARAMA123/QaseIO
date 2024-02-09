@@ -29,7 +29,7 @@ public class ProjectPage {
         return $(By.xpath(TITLE_REPOSITORY_CODE_NAME_XPATH)).getText();
     }
     public String getProjectName() {
-        return $(By.xpath(TITLE_REPOSITORY_NAME_CSS)).getText();
+        return $(TITLE_REPOSITORY_NAME_CSS).getText();
     }
     public String getProjectUrl() {
         getWebDriver().getCurrentUrl();
