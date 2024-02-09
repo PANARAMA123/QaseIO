@@ -10,6 +10,19 @@ public class SuiteTest extends BaseTest {
         loginPage.login(user, password);
         projectsPage.createNewProject(faker.name().title());
         projectPage.waitUntilOpen();
-        projectPage.createNewSuit(faker.name().title());
+        projectPage.createNewSuite(faker.name().title());
+    }
+
+    @Test
+    public void deleteSuite() {
+        loginPage.openPage();
+        loginPage.login(user, password);
+        projectsPage.createNewProject(faker.name().title());
+        projectPage.waitUntilOpen();
+        projectPage.goToCreateNewCase();
+        String caseName = faker.name().title();
+        createNewCasePage.createNewCase(caseName);
+        projectPage.deleteCase(caseName);
+
     }
 }

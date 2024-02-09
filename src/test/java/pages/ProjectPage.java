@@ -13,6 +13,9 @@ public class ProjectPage {
     final  String CREATE_NEW_SUITE_BTN_CSS = "#create-suite-button";
     final  String CREATE_NEW_CASE_BTN_CSS = "#create-case-button";
     final  String NEW_SUITE_TITLE_CSS = "#title";
+    final  String DELETE_CASE_BTN_XPATH = "//div[@id='application-content']//button[text()=' Delete']";
+    final  String SUBMIT_BTN_XPATH = "//form//button[@type='submit']";
+    final  String CHECKBOX_FOR_CASE_XPATH = "//div[text()='%s']//..//input";
 
 
     public void openPage() {
@@ -35,8 +38,15 @@ public class ProjectPage {
     public void goToCreateNewCase() {
         $(CREATE_NEW_CASE_BTN_CSS).click();
     }
-    public void createNewSuit(String suiteName) {
+    public void createNewSuite(String suiteName) {
         $(CREATE_NEW_SUITE_BTN_CSS).click();
-        $(NEW_SUITE_TITLE_CSS).setValue("suiteName").submit();
+        $(NEW_SUITE_TITLE_CSS).setValue(suiteName).submit();
     }
+    public void deleteCase(String suiteName) {
+        $(By.xpath(String.format(CHECKBOX_FOR_CASE_XPATH,suiteName))).click();
+        $(By.xpath(DELETE_CASE_BTN_XPATH)).click();
+        $(By.xpath(SUBMIT_BTN_XPATH)).click();
+
+    }
+
 }

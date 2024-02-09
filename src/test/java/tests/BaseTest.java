@@ -29,30 +29,17 @@ public class BaseTest {
         Configuration.headless = true;
         Configuration.timeout = 20000;
         Configuration.baseUrl = "https://app.qase.io";
-        //Configuration.clickViaJs = true;
         open();
         getWebDriver().manage().window().maximize();
-        //ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--start-maximized");
-        //WebDriver driver = new ChromeDriver();
-        //setWebDriver(driver);
         faker = new Faker();
         loginPage = new LoginPage();
         projectsPage = new ProjectsPage();
         projectPage = new ProjectPage();
         createNewCasePage = new CreateNewCasePage();
-
-        user = System.getProperty("user", PropertyReader.getProperty("qase.user"));
-        System.out.println(user);
-        password = System.getProperty("password", PropertyReader.getProperty("qase.password"));
-        System.out.println(password);
     }
 
     @AfterMethod
     public void closeBrowser() {
-//        if (getWebDriver() != null) {
-//        getWebDriver().quit();
-//        }
         closeWebDriver();
     }
 }
