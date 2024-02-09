@@ -36,8 +36,8 @@ public class BaseTest {
         projectsPage = new ProjectsPage();
         projectPage = new ProjectPage();
         createNewCasePage = new CreateNewCasePage();
-        user = System.getProperty("user", PropertyReader.getProperty("sd.user"));
-        password = System.getProperty("password", PropertyReader.getProperty("sd.password"));
+        user = System.getProperty("user", PropertyReader.getProperty("qase.user"));
+        password = System.getProperty("password", PropertyReader.getProperty("qase.password"));
     }
 
     @AfterMethod
