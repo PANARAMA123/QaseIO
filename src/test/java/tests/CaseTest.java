@@ -9,7 +9,7 @@ public class CaseTest extends BaseTest {
     public void createNewCase() {
         loginPage.openPage();
         loginPage.login(user, password);
-
+        projectsPage.waitUntilOpen();
         projectsPage.createNewProject(faker.name().title());
         projectPage.waitUntilOpen();
         projectPage.goToCreateNewCase();

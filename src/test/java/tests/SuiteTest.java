@@ -17,6 +17,7 @@ public class SuiteTest extends BaseTest {
     public void deleteSuite() {
         loginPage.openPage();
         loginPage.login(user, password);
+        projectsPage.waitUntilOpen();
         projectsPage.createNewProject(faker.name().title());
         projectPage.waitUntilOpen();
         projectPage.goToCreateNewCase();

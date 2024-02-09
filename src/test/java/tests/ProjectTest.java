@@ -11,6 +11,7 @@ public class ProjectTest extends BaseTest {
     public void createNewProject() {
         loginPage.openPage();
         loginPage.login(user, password);
+        projectsPage.waitUntilOpen();
         projectsPage.createNewProject("test", "TEST1","jhk");
         projectPage.waitUntilOpen();
         assertTrue(
