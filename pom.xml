@@ -11,7 +11,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <suiteXmlFile>src/test/resources/SmokeTest.xml</suiteXmlFile>
+        <suiteXmlFile>src/test/resources/AllTests.xml</suiteXmlFile>
     </properties>
     <build>
         <plugins>

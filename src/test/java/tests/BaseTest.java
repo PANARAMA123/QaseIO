@@ -28,7 +28,7 @@ public class BaseTest {
     @BeforeMethod
     public void setup() {
         Configuration.browser = "chrome";
-        Configuration.headless = true;
+        Configuration.headless = false;
         Configuration.timeout = 25000;
         Configuration.baseUrl = "https://app.qase.io";
         open();
