@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import dto.Case;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
@@ -18,6 +19,8 @@ public class ProjectPage {
     final  String SUBMIT_BTN_XPATH = "//form//button[@type='submit']";
     final  String CHECKBOX_FOR_CASE_XPATH = "//div[text()='%s']//..//input";
     final  String CREATE_NEW_CASE_INTO_SUITE_XPATH = "//div[@data-suite-body-id='%s']/../../following-sibling::*//input";
+    final  String CASE_TITLE_XPATH = "//div[text()='%s']";
+
 
 
     public void openPage(String projectCode) {
@@ -51,10 +54,17 @@ public class ProjectPage {
         $(By.xpath(DELETE_CASE_BTN_XPATH)).click();
         $(By.xpath(SUBMIT_BTN_XPATH)).click();
     }
-    public void createNewCaseIntoSuite(int idSuite, String caseTitle) {
+    public void createNewCaseIntoSuiteOnProjectPage(int idSuite, String caseTitle) {
         log.info("Create new case with name = '{}'",caseTitle );
         $(By.xpath(String.format(CREATE_NEW_CASE_INTO_SUITE_XPATH,idSuite))).click();
         $(By.xpath(String.format(CREATE_NEW_CASE_INTO_SUITE_XPATH,idSuite))).setValue(caseTitle).submit();
     }
-
+    public void createNewCaseWithoutSuite(String caseTitle) {
+        log.info("Create new case with name = '{}'",caseTitle );
+        $(By.xpath(String.format(CREATE_NEW_CASE_INTO_SUITE_XPATH, 0))).click();
+        $(By.xpath(String.format(CREATE_NEW_CASE_INTO_SUITE_XPATH, 0))).setValue(caseTitle).submit();
+    }
+    public void checkThatNewCaseIsCreated(String caseTitle) {
+        $(By.xpath(String.format(CASE_TITLE_XPATH, caseTitle))).shouldBe(Condition.visible);
+    }
 }

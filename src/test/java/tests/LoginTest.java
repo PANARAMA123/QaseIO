@@ -2,7 +2,6 @@ package tests;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import utils.PropertyReader;
 
 import static org.testng.Assert.assertEquals;
 
@@ -10,8 +9,6 @@ public class LoginTest extends BaseTest {
 
     @Test(description = "The user should login with the correct credentials")
     public void loginWithValidCredentials()  {
-        System.out.println(PropertyReader.getProperty("apiurl")+ "/v1/project/");
-        System.out.println(System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
         loginPage.openPage();
         loginPage.login(user, password);
         projectsPage.waitUntilOpen();

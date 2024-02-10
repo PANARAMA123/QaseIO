@@ -18,7 +18,7 @@ public class SuiteTest extends BaseTest {
         projectPage.waitUntilOpen();
         projectPage.goToCreateNewCase();
         String caseName = faker.name().title();
-        createNewCasePage.createNewCase(caseName);
+        createNewCasePage.createNewDefaultCase(caseName);
         projectPage.deleteCase(caseName);
     }
 

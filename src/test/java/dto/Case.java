@@ -11,4 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Case {
     String title;
+    String status;
+    String description;
+    String severity;
 }
