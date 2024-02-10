@@ -30,7 +30,7 @@ public class ProjectApi extends BaseApi {
         given().
                 spec(spec).
         when().
-                delete(PropertyReader.getProperty("api.url")+ "/v1/project/" + code).
+                delete(PropertyReader.getProperty("apiurl")+ "/v1/project/" + code).
         then().
                 log().all().
                 statusCode(200);

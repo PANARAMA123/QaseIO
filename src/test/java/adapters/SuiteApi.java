@@ -20,7 +20,7 @@ public class SuiteApi extends BaseApi {
                 spec(spec).
                 body(suite).
            when().
-                post(PropertyReader.getProperty("api.url")+ "/v1/suite/" + project.getCode()).
+                post(PropertyReader.getProperty("apiurl")+ "/v1/suite/" + project.getCode()).
            then().
                 log().all().
                 statusCode(200).extract().as(SuiteApiResponse.class).getResult().getId();

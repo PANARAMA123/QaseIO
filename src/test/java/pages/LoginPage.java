@@ -2,6 +2,7 @@ package pages;
 
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import utils.PropertyReader;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -21,11 +22,11 @@ public class LoginPage {
     }
 
     @Step("Login by {user}")
-    public void login(String user, String pass) {
+    public void login(String user, String password) {
         open("/login");
-        log.info("Login by '{}' with password '{}'",user,pass );
+        log.info("Login by '{}' with password '{}'",user,password);
         $(EMAIL_CSS).setValue(user);
-        $(PASSWORD_CSS).setValue(pass);
+        $(PASSWORD_CSS).setValue(password);
         $(SUBMIT_BTN_CSS).click();
     }
 

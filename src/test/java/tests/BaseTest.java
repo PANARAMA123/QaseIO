@@ -38,10 +38,8 @@ public class BaseTest {
         projectsPage = new ProjectsPage();
         projectPage = new ProjectPage();
         createNewCasePage = new CreateNewCasePage();
-        user = System.getenv().getOrDefault("user", PropertyReader.getProperty("qase.user"));
-        password = System.getenv().getOrDefault("password", PropertyReader.getProperty("qase.password"));
-        System.out.println(user);
-        System.out.println(password);
+        user = System.getenv().getOrDefault("user", PropertyReader.getProperty("user"));
+        password = System.getenv().getOrDefault("password", PropertyReader.getProperty("password"));
     }
 
     @AfterMethod
