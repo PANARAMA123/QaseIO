@@ -23,7 +23,8 @@ public class CaseTest extends BaseTest {
         loginPage.openPage();
         loginPage.login(user, password);
         projectsPage.waitUntilOpen();
-        createNewCasePage.openPage(project.getCode());
+        projectPage.openPage(project.getCode());
+        projectPage.waitUntilOpen();
         projectPage.goToCreateNewCase();
         Case newCase = Case.builder().
                 title(faker.name().firstName()).
