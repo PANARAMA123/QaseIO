@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import pages.CreateNewCasePage;
 import pages.LoginPage;
 import pages.ProjectPage;
@@ -22,12 +23,13 @@ public class BaseTest {
     Faker faker;
     String user;
     String password;
+    String apiToken;
 
     @BeforeMethod
     public void setup() {
         Configuration.browser = "chrome";
         Configuration.headless = true;
-        Configuration.timeout = 20000;
+        Configuration.timeout = 25000;
         Configuration.baseUrl = "https://app.qase.io";
         open();
         getWebDriver().manage().window().maximize();
@@ -36,8 +38,8 @@ public class BaseTest {
         projectsPage = new ProjectsPage();
         projectPage = new ProjectPage();
         createNewCasePage = new CreateNewCasePage();
-        user = System.getProperty("user", PropertyReader.getProperty("qase.user"));
-        password = System.getProperty("password", PropertyReader.getProperty("qase.password"));
+        user = System.getenv().getOrDefault("user", PropertyReader.getProperty("qase.user"));
+        password = System.getenv().getOrDefault("password", PropertyReader.getProperty("qase.password"));
     }
 
     @AfterMethod

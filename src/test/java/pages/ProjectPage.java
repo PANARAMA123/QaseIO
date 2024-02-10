@@ -1,11 +1,12 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-
+@Log4j2
 public class ProjectPage {
 
     final String TITLE_REPOSITORY_CODE_NAME_XPATH = "//h1";
@@ -16,10 +17,11 @@ public class ProjectPage {
     final  String DELETE_CASE_BTN_XPATH = "//div[@id='application-content']//button[text()=' Delete']";
     final  String SUBMIT_BTN_XPATH = "//form//button[@type='submit']";
     final  String CHECKBOX_FOR_CASE_XPATH = "//div[text()='%s']//..//input";
+    final  String CREATE_NEW_CASE_INTO_SUITE_XPATH = "//div[@data-suite-body-id='%s']/../../following-sibling::*//input";
 
 
-    public void openPage() {
-        open("/project");
+    public void openPage(String projectCode) {
+        open("/project/"+ projectCode);
     }
     public void waitUntilOpen() {
         $(CREATE_NEW_SUITE_BTN_CSS).shouldBe(Condition.visible);
@@ -39,14 +41,20 @@ public class ProjectPage {
         $(CREATE_NEW_CASE_BTN_CSS).click();
     }
     public void createNewSuite(String suiteName) {
+        log.info("Create new suite with name = '{}'",suiteName );
         $(CREATE_NEW_SUITE_BTN_CSS).click();
         $(NEW_SUITE_TITLE_CSS).setValue(suiteName).submit();
     }
-    public void deleteCase(String suiteName) {
-        $(By.xpath(String.format(CHECKBOX_FOR_CASE_XPATH,suiteName))).click();
+    public void deleteCase(String caseName) {
+        log.info("Delete case with name =  '{}'",caseName );
+        $(By.xpath(String.format(CHECKBOX_FOR_CASE_XPATH,caseName))).click();
         $(By.xpath(DELETE_CASE_BTN_XPATH)).click();
         $(By.xpath(SUBMIT_BTN_XPATH)).click();
-
+    }
+    public void createNewCaseIntoSuite(int idSuite, String caseTitle) {
+        log.info("Create new case with name = '{}'",caseTitle );
+        $(By.xpath(String.format(CREATE_NEW_CASE_INTO_SUITE_XPATH,idSuite))).click();
+        $(By.xpath(String.format(CREATE_NEW_CASE_INTO_SUITE_XPATH,idSuite))).setValue(caseTitle).submit();
     }
 
 }

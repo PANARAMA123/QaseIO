@@ -12,8 +12,6 @@ import org.testng.ITestResult;
 import java.util.concurrent.TimeUnit;
 
 @Log4j2
-
-
 public class TestListener implements ITestListener {
 
     @Override
