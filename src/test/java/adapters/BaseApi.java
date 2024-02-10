@@ -14,7 +14,7 @@ public class BaseApi {
 
     public void setup() {
         spec = given().
-                header("Token", System.getenv().getOrDefault("apitoken", PropertyReader.getProperty("apitoken"))).
+                header("Token", System.getProperty("apitoken", PropertyReader.getProperty("apitoken"))).
                 header("Content-Type", "application/json");
     }
 }
