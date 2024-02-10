@@ -17,7 +17,7 @@ public class ProjectApi extends BaseApi {
                 spec(spec).
                 body(project).
         when().
-                post(PropertyReader.getProperty("api.url")+ "/v1/project").
+                post(PropertyReader.getProperty("apiurl")+ "/v1/project").
         then().
                 log().all().
                 statusCode(200).
