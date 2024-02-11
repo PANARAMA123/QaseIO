@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 import pages.NewCaseCreationPage;
 
 public class CaseTest extends BaseTest {
-    private String currentProjectCode;
 
     @Test
     public void createNewCaseOnCreationCasePage() {
@@ -19,7 +18,6 @@ public class CaseTest extends BaseTest {
                 code(faker.name().firstName().toUpperCase()).
                 build();
         new ProjectApi().create(project);
-        currentProjectCode = project.getCode();
         loginPage.openPage();
         loginPage.login(user, password);
         projectsPage.waitUntilOpen();
@@ -31,6 +29,7 @@ public class CaseTest extends BaseTest {
                 build();
         createNewCasePage.createNewDefaultCase(newCase.getTitle());
         projectPage.checkThatNewCaseIsCreated(newCase.getTitle());
+        new ProjectApi().deleteProject(project.getCode());
     }
 
     @Test
@@ -40,7 +39,6 @@ public class CaseTest extends BaseTest {
                 code(faker.name().firstName().toUpperCase()).
                 build();
         new ProjectApi().create(project);
-        currentProjectCode = project.getCode();
         loginPage.openPage();
         loginPage.login(user, password);
         projectsPage.waitUntilOpen();
@@ -55,6 +53,7 @@ public class CaseTest extends BaseTest {
                 build();
         projectPage.createNewCaseIntoSuiteOnProjectPage(suite.getId(),newCase.getTitle());
         projectPage.checkThatNewCaseIsCreated(newCase.getTitle());
+        new ProjectApi().deleteProject(project.getCode());
     }
 
     @Test
@@ -64,7 +63,6 @@ public class CaseTest extends BaseTest {
                 code(faker.name().firstName().toUpperCase()).
                 build();
         new ProjectApi().create(project);
-        currentProjectCode = project.getCode();
         loginPage.openPage();
         loginPage.login(user, password);
         projectsPage.waitUntilOpen();
@@ -81,10 +79,24 @@ public class CaseTest extends BaseTest {
         createNewCasePage.openPage(project.getCode());
         createNewCasePage.createNewCaseWithAllFields(newCase);
         projectPage.checkThatNewCaseIsCreated(newCase.getTitle());
-
+        new ProjectApi().deleteProject(project.getCode());
     }
-    @AfterTest
-    public void clean() {
-        new ProjectApi().deleteProject(currentProjectCode);
+
+    @Test
+    public void deleteCase() {
+        Project project = Project.builder().
+                title(faker.name().firstName()).
+                code(faker.name().firstName().toUpperCase()).
+                build();
+        new ProjectApi().create(project);
+        loginPage.openPage();
+        loginPage.login(user, password);
+        projectsPage.waitUntilOpen();
+        createNewCasePage.openPage(project.getCode());
+        String caseName = faker.name().title();
+        createNewCasePage.createNewDefaultCase(caseName);
+        projectPage.deleteCase(caseName);
+        projectPage.checkThatCaseIsDeleted(caseName);
+        new ProjectApi().deleteProject(project.getCode());
     }
 }

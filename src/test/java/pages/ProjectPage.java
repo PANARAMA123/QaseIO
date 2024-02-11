@@ -20,6 +20,7 @@ public class ProjectPage {
     final  String CHECKBOX_FOR_CASE_XPATH = "//div[text()='%s']//..//input";
     final  String CREATE_NEW_CASE_INTO_SUITE_XPATH = "//div[@data-suite-body-id='%s']/../../following-sibling::*//input";
     final  String CASE_TITLE_XPATH = "//div[text()='%s']";
+    final  String CONFIRM_INPUT_CSS = "[name=confirm]";
 
 
 
@@ -52,6 +53,7 @@ public class ProjectPage {
         log.info("Delete case with name =  '{}'",caseName );
         $(By.xpath(String.format(CHECKBOX_FOR_CASE_XPATH,caseName))).click();
         $(By.xpath(DELETE_CASE_BTN_XPATH)).click();
+        $(CONFIRM_INPUT_CSS).setValue("CONFIRM");
         $(By.xpath(SUBMIT_BTN_XPATH)).click();
     }
     public void createNewCaseIntoSuiteOnProjectPage(int idSuite, String caseTitle) {
@@ -66,5 +68,8 @@ public class ProjectPage {
     }
     public void checkThatNewCaseIsCreated(String caseTitle) {
         $(By.xpath(String.format(CASE_TITLE_XPATH, caseTitle))).shouldBe(Condition.visible);
+    }
+    public void checkThatCaseIsDeleted(String caseTitle) {
+        $(By.xpath(String.format(CASE_TITLE_XPATH, caseTitle))).shouldNotBe(Condition.visible);
     }
 }
