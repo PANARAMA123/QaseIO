@@ -1,4 +1,4 @@
-package tests.base;
+package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
@@ -26,7 +26,7 @@ public class BaseTest {
     @BeforeMethod
     public void setup() {
         Configuration.browser = "chrome";
-        Configuration.headless = false;
+        Configuration.headless = true;
         Configuration.timeout = 25000;
         Configuration.baseUrl = "https://app.qase.io";
         open();

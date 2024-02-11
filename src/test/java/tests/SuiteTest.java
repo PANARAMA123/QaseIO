@@ -3,7 +3,6 @@ package tests;
 import adapters.ProjectApi;
 import dto.Project;
 import org.testng.annotations.Test;
-import tests.base.BaseTest;
 
 import static io.restassured.RestAssured.given;
 

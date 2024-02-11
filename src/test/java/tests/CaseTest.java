@@ -6,7 +6,6 @@ import dto.Case;
 import dto.Project;
 import dto.Suite;
 import org.testng.annotations.Test;
-import tests.base.BaseTest;
 
 public class CaseTest extends BaseTest {
 
