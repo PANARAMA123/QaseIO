@@ -5,9 +5,8 @@ import adapters.SuiteApi;
 import dto.Case;
 import dto.Project;
 import dto.Suite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
-import pages.NewCaseCreationPage;
+import tests.base.BaseTest;
 
 public class CaseTest extends BaseTest {
 

@@ -2,12 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="2" name="QaseIO All Test" parallel="tests">
     <listeners>
-        <listener class-name="tests.AnnotationTransformer"/>
+        <listener class-name="tests.base.AnnotationTransformer"/>
+        <listener class-name="tests.base.TestListener"/>
     </listeners>
     <test name="Thread #1">
         <classes>
             <class name="tests.LoginTest"/>
             <class name="tests.ProjectTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Thread #2">
+        <classes>
             <class name="tests.CaseTest"/>
         </classes>
     </test> <!-- Test -->

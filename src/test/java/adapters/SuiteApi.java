@@ -11,7 +11,6 @@ import static io.restassured.RestAssured.given;
 @Log4j2
 public class SuiteApi extends BaseApi {
 
-
     @Step("Create suite with title = '{suite.title}'")
     public int create(Project project, Suite suite) {
         log.info("Create suite with title = '{}' in project = '{}'",suite.getTitle(),project.getCode());

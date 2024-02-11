@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import dto.Case;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
