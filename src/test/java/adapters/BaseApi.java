@@ -6,14 +6,14 @@ import static io.restassured.RestAssured.given;
 
 public class BaseApi {
 
-    RequestSpecification spec;
+    RequestSpecification specification;
 
     public BaseApi() {
         setup();
     }
 
     public void setup() {
-        spec = given().
+        specification = given().
                 header("Token", System.getProperty("apitoken", PropertyReader.getProperty("apitoken"))).
                 header("Content-Type", "application/json");
     }

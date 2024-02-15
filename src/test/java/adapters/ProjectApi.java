@@ -14,7 +14,7 @@ public class ProjectApi extends BaseApi {
     public String create(Project project) {
         log.info("Create project with title = '{}' and code = '{}'",project.getTitle(), project.getCode());
         return   given().
-                spec(spec).
+                spec(specification).
                 body(project).
         when().
                 post(PropertyReader.getProperty("apiurl")+ "/v1/project").
@@ -28,7 +28,7 @@ public class ProjectApi extends BaseApi {
     public void deleteProject(String code) {
         log.info("Delete project with code =  '{}'", code);
         given().
-                spec(spec).
+                spec(specification).
         when().
                 delete(PropertyReader.getProperty("apiurl")+ "/v1/project/" + code).
         then().

@@ -16,7 +16,7 @@ public class SuiteApi extends BaseApi {
         log.info("Create suite with title = '{}' in project = '{}'",suite.getTitle(),project.getCode());
         System.out.println(suite);
         return given().
-                spec(spec).
+                spec(specification).
                 body(suite).
            when().
                 post(PropertyReader.getProperty("apiurl")+ "/v1/suite/" + project.getCode()).

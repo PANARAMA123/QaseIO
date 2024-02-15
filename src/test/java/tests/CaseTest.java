@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class CaseTest extends BaseTest {
 
-    @Test
+    @Test(description = "The user can create new Test Case on case creation page")
     public void createNewCaseOnCreationCasePage() {
         Project project = Project.builder().
                 title(faker.name().firstName()).
@@ -30,7 +30,7 @@ public class CaseTest extends BaseTest {
         new ProjectApi().deleteProject(project.getCode());
     }
 
-    @Test
+    @Test(description = "The user can create new Test Case on project page")
     public void createNewCasesOnProjectPage() {
         Project project = Project.builder().
                 title(faker.name().firstName()).
@@ -54,7 +54,7 @@ public class CaseTest extends BaseTest {
         new ProjectApi().deleteProject(project.getCode());
     }
 
-    @Test
+    @Test(description = "The user can create new and fill out all fields")
     public void createNewCaseWithAllFields() {
         Project project = Project.builder().
                 title(faker.name().firstName()).
@@ -80,7 +80,7 @@ public class CaseTest extends BaseTest {
         new ProjectApi().deleteProject(project.getCode());
     }
 
-    @Test
+    @Test(description = "The user can delete test case on project page")
     public void deleteCase() {
         Project project = Project.builder().
                 title(faker.name().firstName()).
