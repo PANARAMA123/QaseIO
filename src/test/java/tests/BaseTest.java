@@ -3,7 +3,6 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
-import io.qameta.allure.selenide.AllureSelenide;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -31,10 +30,6 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(true)
-                .includeSelenideSteps(false)
-                .savePageSource(false));
         Configuration.browser = "chrome";
         Configuration.headless = true;
         Configuration.timeout = 25000;

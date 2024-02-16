@@ -22,4 +22,4 @@ QASE Check list:
 
 11. Create new case with all fields
 
-12.     Delete case
+12. Delete test case

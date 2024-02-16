@@ -5,8 +5,6 @@ import dto.Project;
 import dto.Suite;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.given;
-
 public class SuiteTest extends BaseTest {
 
     @Test(description = "The user can create new suite on project page")
