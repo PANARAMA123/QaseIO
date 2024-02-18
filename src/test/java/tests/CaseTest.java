@@ -7,6 +7,8 @@ import dto.Project;
 import dto.Suite;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+
 public class CaseTest extends BaseTest {
 
     @Test(description = "The user can create new Test Case on case creation page")
@@ -50,7 +52,10 @@ public class CaseTest extends BaseTest {
                 title(faker.name().firstName()).
                 build();
         projectPage.createNewCaseIntoSuiteOnProjectPage(suite.getId(),newCase.getTitle());
-        projectPage.checkThatNewCaseIsCreated(newCase.getTitle());
+        assertEquals(
+                projectPage.checkThatNewCaseIsCreated(newCase.getTitle()),
+                newCase.getTitle(),
+                "Case isn't created");
         new ProjectApi().deleteProject(project.getCode());
     }
 
@@ -79,6 +84,10 @@ public class CaseTest extends BaseTest {
                 build();
         createNewCasePage.openPage(project.getCode());
         createNewCasePage.createNewCaseWithAllFields(newCase);
+        assertEquals(
+                projectPage.checkThatNewCaseIsCreated(newCase.getTitle()),
+                newCase.getTitle(),
+                "Case isn't created");
         projectPage.checkThatNewCaseIsCreated(newCase.getTitle());
         new ProjectApi().deleteProject(project.getCode());
     }

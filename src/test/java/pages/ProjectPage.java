@@ -79,8 +79,8 @@ public class ProjectPage {
         $(By.xpath(String.format(CREATE_NEW_CASE_INTO_SUITE_XPATH, 0))).setValue(caseTitle).submit();
     }*/
     @Step("Checking that test with title = {caseTitle} is created")
-    public void checkThatNewCaseIsCreated(String caseTitle) {
-        $(By.xpath(String.format(CASE_TITLE_XPATH, caseTitle))).shouldBe(Condition.visible);
+    public String checkThatNewCaseIsCreated(String caseTitle) {
+        return $(By.xpath(String.format(CASE_TITLE_XPATH, caseTitle))).shouldBe(Condition.visible).getText();
     }
     @Step("Checking that test with title = {caseTitle} is deleted")
     public void checkThatCaseIsDeleted(String caseTitle) {
