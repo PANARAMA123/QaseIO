@@ -80,7 +80,7 @@ public class CaseTest extends BaseTest {
         createNewCasePage.openPage(project.getCode());
         createNewCasePage.createNewCaseWithAllFields(newCase);
         projectPage.checkThatNewCaseIsCreated(newCase.getTitle());
-        //new ProjectApi().deleteProject(project.getCode());
+        new ProjectApi().deleteProject(project.getCode());
     }
 
     @Test(description = "The user can delete test case on project page")

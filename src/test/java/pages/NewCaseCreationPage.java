@@ -29,7 +29,7 @@ public class NewCaseCreationPage {
     public void createNewCaseWithAllFields(Case newCase) {
         $(TITLE_CSS).sendKeys(newCase.getTitle());
         new DropDown().selectOption("Status", newCase.getStatus());
-        //new SearchList().selectOption("Suite", newCase.getSuite());
+        new SearchList().selectOption("Suite", newCase.getSuite());
         new DropDown().selectOption("Severity", newCase.getSeverity());
         new DropDown().selectOption("Priority", newCase.getPriority());
         if (newCase.isToBeAutomated()) {
