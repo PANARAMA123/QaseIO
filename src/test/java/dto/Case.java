@@ -14,4 +14,8 @@ public class Case {
     String status;
     String description;
     String severity;
+    String suite;
+    String priority;
+    boolean toBeAutomated;
+
 }

@@ -3,10 +3,12 @@ package pages;
 import dto.Case;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import wrappers.CheckBox;
 import wrappers.DropDown;
+import wrappers.SearchList;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+
 @Log4j2
 public class NewCaseCreationPage {
     final String TITLE_CSS = "#title";
@@ -27,6 +29,12 @@ public class NewCaseCreationPage {
     public void createNewCaseWithAllFields(Case newCase) {
         $(TITLE_CSS).sendKeys(newCase.getTitle());
         new DropDown().selectOption("Status", newCase.getStatus());
+        //new SearchList().selectOption("Suite", newCase.getSuite());
+        new DropDown().selectOption("Severity", newCase.getSeverity());
+        new DropDown().selectOption("Priority", newCase.getPriority());
+        if (newCase.isToBeAutomated()) {
+            new CheckBox().selectCheckbox("To be automated");
+        }
         $(SAVE_BTN_CSS).click();
     }
 }
